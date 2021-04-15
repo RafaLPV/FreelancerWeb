@@ -1,0 +1,295 @@
+/* Con :root puedo almacenar variables en css --> Custom Propierties */
+
+:root{
+    --blanco:#ffffff;
+    --oscuro:#212121;
+    --primario:#ffc107;
+    --secundario:#0097a7;
+    --gris:#757575;
+}
+
+/* Scroll Snap -- Efectos de Scroll en la pantalla*/
+
+.navegacion-principal,
+.servicio,
+.formulario
+{
+    scroll-snap-align: center;
+    scroll-snap-stop: always;
+}
+
+/* Golables */
+
+html{
+    font-size: 62.5%;     /* Hack para BoxModel */
+    box-sizing: border-box;
+    scroll-snap-type: y mandatory;
+}
+
+*, *:before, *:after {
+    box-sizing: inherit;    /* Con este bloque de codigo se consigue que propiedades como el pading o el margin no afecte al tamaño del bloque*/
+}
+
+p{
+    line-height: 2;
+}
+
+body{
+    font-size: 16px;    /* 1rem = 10px */
+    font-family: 'Kreon', serif;
+    background-image: linear-gradient(to top, #dfe9f3 0%, var(--blanco));  /* Colores de fondos con degradados */
+}
+
+.contenedor{
+    max-width: 120rem;  /* Con max-width hacemos que tome como valor maximo de anchura ese valor si lo hay disponible, si no pues tomará toda el ancho de pantalla */
+    margin: 0 auto;     /* CSS interpreta el primer valor como top/bottom y el segudo valor como right/left */
+}
+
+.boton{
+    background-color: var(--secundario);
+    color: var(--blanco);
+    padding: 1rem 3rem;
+    margin-top: 1rem;
+    font-size: 2rem;
+    text-decoration: none;
+    text-transform: uppercase;  /* Pone el texto en mayusucula */ 
+    font-weight: bold;         
+    border-radius: .5rem;   
+    text-align: center;     /* Redondea las esquinas de los cuadros */
+    width: 90%;
+    border: none;
+}
+
+.boton:hover{
+    cursor: pointer;
+}
+
+@media (min-width: 768px) {
+    .boton{
+        width: auto;
+    }
+}
+
+.sombra{
+    -webkit-box-shadow: 0px 11px 15px -9px rgba(0,0,0,0.63);
+    -moz-box-shadow: 0px 11px 15px -9px rgba(0,0,0,0.63);
+    box-shadow: 0px 11px 15px -9px rgba(0,0,0,0.63);
+    background-color: var(--blanco);
+    padding: 2rem;
+    border-radius: 1rem;
+}
+
+/* Tipografías */
+
+h1{
+    font-size: 3.8rem;
+}
+
+h2{
+    font-size: 2.8rem;
+}
+
+h3{
+    font-size: 1.8rem;
+}
+
+h1,h2,h3{
+    text-align: center;
+}
+
+/* Titulos */
+
+.titulo span{
+    font-size: 2rem;
+}
+
+/* Utilidades */
+
+.w-sm-100{
+    width: 100%;
+}
+
+@media (min-width: 768px) {
+    .w-sm-100{
+        width: auto;
+    }
+}
+
+.flex{
+    display: flex;
+}
+
+.alinear-derecha{
+    justify-content: flex-end;
+}
+
+
+
+/* Navegacion Principal */
+
+.nav-bag{
+    background-color: var(--secundario);
+}
+
+.navegacion-principal{
+    display: flex;
+    flex-direction: column;
+}
+
+@media (min-width: 768px) {  
+    .navegacion-principal {
+        flex-direction: row;
+        justify-content: space-between;
+    }  
+}
+
+.navegacion-principal a {
+    display: block;
+    text-align: center;
+    color: var(--blanco);
+    text-decoration: none;
+    font-size: 2rem;
+    padding: 1rem;
+}
+
+.navegacion-principal a:hover {      /* Con hover conseguimos que estas propiedades se apliquen cuando el cursos pase por encima */
+    background-color: var(--primario);
+    color: var(--oscuro);
+}
+
+/* Hero */
+
+.hero{
+    background-image:url(../img/hero.jpg);     /* Se utiliza para poner imagenes de fondo*/
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+    height: 40rem;
+    margin-bottom: 2rem;
+}
+
+.contenido-hero{
+    position: absolute;
+    /* background-color: rgb(0,0,0,0.7); */
+    background-color: rgb(0 0 0 /70%);
+    width: 100%;
+    height: 100%;
+    display: flex;       /* Por defecto flex-direction: row, es decir, en filas. Y se alinea de manera inversa a como se hace con column */
+    flex-direction: column;
+    align-items: center;      /* En flex-direction: column, se alinea horizontalmente con align-items */
+    justify-content: center;  /* En flex-direction: column, se alinea verticalmente con justify-content */
+}
+
+.contenido-hero h2,
+.contenido-hero p {
+    color: var(--blanco);
+}
+
+/* Servicios */
+
+@media (min-width: 768px) {
+    .servicios{
+        display: grid;
+        grid-template-columns: repeat(3, 1fr); /* Dividir en fracciones, es decir, 1/3 del total */
+        /* grid: Valores de Filas / Valores de Columnas*/
+        column-gap: 1rem;
+    } 
+}
+
+.servicio{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.servicio p{
+    line-height: 2;
+    text-align: center;
+}
+
+.servicio h3{
+    color: var(--gris);
+    font-weight: normal;
+}
+
+.servicio .iconos {
+    height: 15rem;
+    width: 15rem;
+    background-color: var(--primario);
+    border-radius: 50%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+/* Contacto */
+
+.formulario{
+    background-color: var(--gris);
+    width: min( 60rem, 100%); /* Utilizar el valor mas pequeño*/
+    margin: 0 auto;
+    padding: 2rem;
+    border-radius: 1rem;
+}
+
+.formulario fieldset{
+    border: none;
+
+}
+
+.formulario legend{
+    color: var(--primario);
+    font-size: 1.8rem;
+    text-transform: uppercase;
+    font-weight: 700;
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+.campo{
+    margin-bottom: 1rem;
+}
+
+.campo label{
+    color: var(--blanco);
+    font-weight: bold;
+    margin-bottom: .5rem;
+    display: block;
+}
+
+.contenedor-campos{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: auto auto 20rem;
+    column-gap: 1rem;
+}
+
+.campo:nth-child(3),
+.campo:nth-child(4){
+    grid-column: 1 / 3;     /* Cambiamos las filas y las columnas del CSS Grid*/
+}
+
+
+/* .campo input[type="text"]{
+
+} */
+
+.input-text{
+    width: 100%;
+    border: none;
+    padding: 1.5rem;
+    border-radius: 1.5rem;
+}
+
+.campo textarea{
+    height: 20rem;
+}
+
+
+
+/* Footer */
+
+footer {
+    text-align: center;
+    width: 700;
+}
